@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murtala Muhammad Hospital Management System Kano</title>
+</head>
+<body>
+    <h1>Murtala Muhammad Hospital Management System Kano</h1>
+    <h2>Doctors List</h2>
+    <h3>Patient List</h3>
+    <h4>Appointment List</h4>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murtala Muhammad Hospital Management System Kano</title>
+</head>
+<body>
+    <h1>Murtala Muhammad Hospital Management System Kano</h1>
+
+    <!-- Doctors List -->
+    <h2>Doctors List</h2>
+    <ul>
+        {% for doctor in doctors %}
+            <li>{{ doctor.name }} - {{ doctor.specialization }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Doctor Form -->
+    <h3>Add Doctor</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ doctor_form.as_p }}
+        <button type="submit" name="doctor_form">Add Doctor</button>
+    </form>
+
+    <!-- Patient List -->
+    <h2>Patient List</h2>
+    <ul>
+        {% for patient in patients %}
+            <li>{{ patient.name }} - Age: {{ patient.age }} - Medical History: {{ patient.medical_history }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Patient Form -->
+    <h3>Add Patient</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ patient_form.as_p }}
+        <button type="submit" name="patient_form">Add Patient</button>
+    </form>
+
+    <!-- Appointment List -->
+    <h2>Appointment List</h2>
+    <ul>
+        {% for appointment in appointments %}
+            <li>Doctor: {{ appointment.doctor }} - Patient: {{ appointment.patient }} - Date: {{ appointment.date }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Appointment Form -->
+    <h3>Add Appointment</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ appointment_form.as_p }}
+        <button type="submit" name="appointment_form">Add Appointment</button>
+    </form>
+</body>
+</html>
+
+
+
+
